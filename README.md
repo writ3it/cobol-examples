@@ -3,6 +3,8 @@ The set of cobol examples
 
 ## Getting Started
 
+### Using CLI
+
 1. Install gnuCobol
 
 ```bash
@@ -19,3 +21,7 @@ $ colc -x basic/01_hello_world.cob
 ```
 $ ./01_hello_world
 ```
+
+### Using IDE
+
+TODO: find Cobol IDE that is free and alive.
