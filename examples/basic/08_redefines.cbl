@@ -1,6 +1,6 @@
       *> TODO - improve the explanation of this example
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. 03_ADDING.
+       PROGRAM-ID. 08_REDEFINES.
        
        DATA DIVISION.
            WORKING-STORAGE SECTION.
