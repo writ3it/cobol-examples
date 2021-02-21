@@ -1,7 +1,7 @@
       * Rewrite SampleData/persons.txt to build/output.txt
       * but output.txt is indexed file
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. 01_READ_FILE.
+       PROGRAM-ID. 02_WRITE.
 
        ENVIRONMENT DIVISION.
            INPUT-OUTPUT SECTION.
@@ -9,10 +9,10 @@
                SELECT PERSON-IN ASSIGN TO '../SampleData/persons.txt'
                    ORGANIZATION IS LINE SEQUENTIAL.
 
-               SELECT PERSON-OUT ASSIGN TO 'output.txt'
+               SELECT PERSON-OUT ASSIGN TO 'output.dat'
                    ORGANIZATION IS INDEXED
                    ACCESS IS DYNAMIC
-                   RECORD KEY IS FO_PERSON-SURNAME.
+                   RECORD KEY IS FO_PERSON-ID.
               
 
        DATA DIVISION.
@@ -39,14 +39,18 @@
        PROCEDURE DIVISION.
            OPEN INPUT PERSON-IN.
            OPEN OUTPUT PERSON-OUT.
+           CLOSE PERSON-OUT.
+           OPEN I-O PERSON-OUT.
 
                PERFORM UNTIL B_EOF = 'T'
                    READ PERSON-IN INTO FO_PERSON
                        AT END MOVE 'T' TO B_EOF
                        NOT AT END DISPLAY FO_PERSON
                    END-READ
-                   WRITE FO_PERSON 
-                   END-WRITE
+                   IF NOT B_EOF = 'T' THEN
+                       WRITE FO_PERSON 
+                       END-WRITE
+                   END-IF
                END-PERFORM.
 
            CLOSE PERSON-OUT.
