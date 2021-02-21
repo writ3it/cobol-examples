@@ -35,3 +35,9 @@ $ ./01_hello_world
 
 1. If you are using linux, everything is configured out of the box. Type `Ctrl + Shift + B`. Enjoy!
 
+
+## Usefull docs
+
+1. [Picture symbols](docs/picture_symbols.md)
+
+

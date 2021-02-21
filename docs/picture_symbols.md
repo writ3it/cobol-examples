@@ -1,4 +1,4 @@
-# PICTURE DATA TYPES
+# PICTURE SYMBOLS
 
 ## GnuCobol ([source](https://gnucobol.sourceforge.io/faq/index.html#picture))
 
