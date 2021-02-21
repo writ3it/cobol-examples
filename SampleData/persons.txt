@@ -1,0 +1,20 @@
+001 Gabriel         Narutowicz
+002 Maciej          Rataj
+003 Stanisław       Wojciechowski
+004 Maciej          Rataj
+005 Ignacy          Mościcki
+006 Edward          Śmigły-Rydz
+007 Bolesław        Wieniawa-Długoszewski
+008 Władysław       Raczkiewicz
+009 August          Zaleski
+010 Stanisław       Ostrowski
+011 Edward Bernard  Raczyński
+012 Kazimierz       Sabbat
+013 Ryszard         Kaczorowski
+014 Bolesław        Bierut
+015 Wojcciech       Jaruzelski
+016 Lech            Wałęsa
+017 Aleksander      Kwaśniewski
+018 Lech            Kaczyński
+019 Bronisław       Komorowski
+020 Andrzej         Duda
