@@ -1,7 +1,8 @@
 *
-/build/
-/build/*
-# don't track changes in 
-/SampleData/persons2.txt 
 !/**/
 !*.*
+
+/build/
+/build/*.*
+# don't track changes in 
+/SampleData/persons2.txt 
