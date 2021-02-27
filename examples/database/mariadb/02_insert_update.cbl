@@ -1,5 +1,5 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. 02_insert.
+       PROGRAM-ID. 02_insert_update.
 
        DATA DIVISION.
            WORKING-STORAGE SECTION.
@@ -8,6 +8,7 @@
                05 BUFFER               PIC X(1024).
                05 cnt-old              PIC 9(4).
                05 cnt-new              PIC 9(4).
+               05 filter-king-name     PIC X(50).
                05 king.
                    10 king-id              PIC 9(10).
                    10 filler               PIC XXX VALUE " | ".
@@ -47,7 +48,7 @@
 
            DISPLAY "Rows number before insertion: "cnt-old.
 
-           MOVE 'Rudolf' TO king-name.
+           MOVE 'rudolf xyz' TO king-name.
            MOVE 1281 TO king-year_of_birth.
            MOVE 1307 TO king-year_of_death.
            MOVE 1306 TO king-reign_year_start.
@@ -83,6 +84,20 @@
            ELSE    
                DISPLAY "FAILD!"
            END-IF.
+
+           MOVE king-name TO filter-king-name.
+           MOVE 'Rudolf' TO king-name.
+
+           EXEC SQL
+               UPDATE kings_of_poland 
+               SET name = :king-name
+               WHERE name = :filter-king-name
+           END-EXEC.
+
+           DISPLAY "Try 01_select to check the updated king."
+
+
+           PERFORM SQLSTATE-CHECK.
 
            EXEC SQL
                CONNECT RESET
