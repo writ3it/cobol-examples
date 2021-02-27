@@ -16,7 +16,11 @@ Vagrant.configure("2") do |config|
 
             sudo mysql -e "CREATE DATABASE coboldb;"
             
-            sudo mysql coboldb < /tmp/init.sql
+            sudo mysql coboldb< /tmp/init.sql
+
+            sudo sed -i 's/bind-address            = 127\.0\.0\.1/bind-address            = 0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
+
+            sudo service mariadb restart
         SHELL
     end
 end
