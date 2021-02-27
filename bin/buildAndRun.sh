@@ -2,25 +2,6 @@
 
 # $1 = ${workspaceFolder}
 # $2 = ${file}
-mkdir -p $1/build
-mkdir -p $1/build/precompiled/
-dirPath=$(dirname "$2")
-fileName=$(basename "$2" .cbl)
-prefix=${fileName:0:3}
 
-filesStr=''
-
-
-for files in "$dirPath/$prefix*.cbl"; do
-    for file in $files; do
-        pfileName=$(basename "$file" .cbl)
-        destFile=$1/build/precompiled/$pfileName.cob
-        esqlOC -static -o $destFile $file
-        
-        filesStr=$filesStr' '$destFile
-    done
-done
-
-
-cobc  -I$1/CopyBooks -I$1/CopyBooks/Public -fixed -static -x -o $1/build/$fileName $filesStr -locsql || exit 1
-cd $1/build; OCSQL_LOGLEVEL=0 ./$fileName
+file=$(echo "$2" | sed "s#$1#/home/vagrant#")
+/usr/bin/vagrant ssh cobol -c "./bin/vagrantBuild.sh /home/vagrant $file"
