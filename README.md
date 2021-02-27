@@ -12,9 +12,10 @@ The set of cobol examples
 5. Type `Ctrl + Shift + B`. Enjoy!
 6. After work, do `$ vagrant halt` to stop virtual machines.
 
+## Environment architecture
+
+![Environment architecture diagram](docs/vagrant_arch.png)
 
 ## Usefull docs
 
 1. [Picture symbols](docs/picture_symbols.md)
-
-

@@ -24,6 +24,37 @@ Vagrant.configure("2") do |config|
         SHELL
     end
 
+    config.vm.define "mainframe" do |mainframe|
+        mainframe.vm.synced_folder "examples", "/home/vagrant/examples/"
+        mainframe.vm.synced_folder "CopyBooks", "/home/vagrant/CopyBooks/"
+        mainframe.vm.synced_folder "bin", "/home/vagrant/bin/"
+        mainframe.vm.box = "generic/debian10"
+        mainframe.vm.hostname = 'mainframe.local'
+        mainframe.vm.network "private_network", ip: "10.0.1.4"
+        mainframe.vm.network "forwarded_port", guest: 3270, host: 3270
+
+        mainframe.vm.provision "shell", inline: <<-SHELL
+            # hercules emulator and terminal
+            sudo apt-get -y install hercules x3270 c3270 unzip
+            
+
+            # hercules os (MVS turnkey)
+            wget http://wotho.ethz.ch/tk4-/tk4-_v1.00_current.zip
+            mkdir mvs
+            cd mvs 
+            unzip ../tk4-_v1.00_current.zip
+            cd ..
+            rm tk4-_v1.00_current.zip
+            sudo chown -R vagrant:vagrant mvs
+            chmod +x mvs/mvs
+        SHELL
+        mainframe.vm.provision "shell",run: 'always',inline: <<-SHELL
+            cd mvs
+            su - vagrant
+            ./mvs &
+        SHELL
+    end
+
     config.vm.define "cobol" do |cobol|
         cobol.vm.synced_folder "examples", "/home/vagrant/examples/"
         cobol.vm.synced_folder "CopyBooks", "/home/vagrant/CopyBooks/"
@@ -35,41 +66,41 @@ Vagrant.configure("2") do |config|
       
 
         cobol.vm.provision "shell", inline: <<-SHELL
+            sudo apt-get update
+            
+            # gnuCobol
+            sudo apt-get -y install open-cobol gnucobol g++ unixodbc unixodbc-dev odbcinst git cmake make gcc libssl-dev 
 
-        sudo apt-get update
-        
-        # gnuCobol
-        sudo apt-get -y install open-cobol gnucobol g++ unixodbc unixodbc-dev odbcinst git cmake make gcc libssl-dev 
+            # mariadb odbc
+            git clone https://github.com/MariaDB/mariadb-connector-odbc.git
+            cd mariadb-connector-odbc
+            cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCONC_WITH_UNIT_TESTS=Off -DCONC_WITH_MSI=OFF -DCMAKE_INSTALL_PREFIX=/usr/local .
+            cmake --build . --config RelWithDebInfo
+            sudo make install
+            cd ..
+            rm -rf mariadb-connector-odbc
 
-        # mariadb odbc
-        git clone https://github.com/MariaDB/mariadb-connector-odbc.git
-        cd mariadb-connector-odbc
-        cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCONC_WITH_UNIT_TESTS=Off -DCONC_WITH_MSI=OFF -DCMAKE_INSTALL_PREFIX=/usr/local .
-        cmake --build . --config RelWithDebInfo
-        sudo make install
-        cd ..
-        rm -rf mariadb-connector-odbc
+            # register mariadb odbc driver
+            sudo odbcinst -i -d -f examples/database/mariadb/mariadb_driver_template.ini
+            
+            # esqlOC
+            wget http://www.kiska.net/opencobol/esql/gnu-cobol-sql-2.0.tar.gz
+            tar xvf gnu-cobol-sql-2.0.tar.gz
+            cd gnu-cobol-sql-2.0
+            ./configure
+            make
+            sudo make install
+            sudo ldconfig
+            cd ..
+            rm -rf gnu-cobol-sql-2.0
+            rm gnu-cobol-sql-2.0.tar.gz
 
-        # register mariadb odbc driver
-        sudo odbcinst -i -d -f examples/database/mariadb/mariadb_driver_template.ini
-        
+            # permission
+            chmod +x bin/*
 
-        # esqlOC
-        wget http://www.kiska.net/opencobol/esql/gnu-cobol-sql-2.0.tar.gz
-        tar xvf gnu-cobol-sql-2.0.tar.gz
-        cd gnu-cobol-sql-2.0
-        ./configure
-        make
-        sudo make install
-        sudo ldconfig
-        cd ..
-        rm -rf gnu-cobol-sql-2.0
-
-        # permission
-        chmod +x bin/*
-
-        
-        
+            # c3270
+            sudo apt-get -y install c3270
+            echo "alias mf-terminal='c3270 10.0.1.4 3270'" >> .bashrc
         SHELL
     end
 end
