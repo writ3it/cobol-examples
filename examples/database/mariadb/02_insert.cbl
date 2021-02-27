@@ -1,11 +1,13 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. 01_select.
+       PROGRAM-ID. 02_insert.
 
        DATA DIVISION.
            WORKING-STORAGE SECTION.
            EXEC SQL BEGIN DECLARE SECTION END-EXEC.
            01  HOSTVARS.
                05 BUFFER               PIC X(1024).
+               05 cnt-old              PIC 9(4).
+               05 cnt-new              PIC 9(4).
                05 king.
                    10 king-id              PIC 9(10).
                    10 filler               PIC XXX VALUE " | ".
@@ -39,35 +41,48 @@
            PERFORM SQLSTATE-CHECK
 
            EXEC SQL
-               DECLARE CURR_KINGS CURSOR FOR
-               SELECT id, name,year_of_birth,year_of_death,
-               reign_year_start,reign_year_end FROM kings_of_poland
+               SELECT count(*) INTO :cnt-old
+                FROM kings_of_poland
            END-EXEC.
+
+           DISPLAY "Rows number before insertion: "cnt-old.
+
+           MOVE 'Rudolf' TO king-name.
+           MOVE 1281 TO king-year_of_birth.
+           MOVE 1307 TO king-year_of_death.
+           MOVE 1306 TO king-reign_year_start.
+           MOVE 1307 TO king-reign_year_end.
 
            PERFORM SQLSTATE-CHECK
 
            EXEC SQL
-               OPEN CURR_KINGS
-           END-EXEC.
-
-           PERFORM SQLSTATE-CHECK
-
-           PERFORM UNTIL SQLCODE = 100
-               EXEC SQL 
-                   FETCH CURR_KINGS
-                   INTO
-                       :king-id, 
-                       :king-name,
+               INSERT INTO kings_of_poland (name, 
+                                           year_of_birth,
+                                           year_of_death,
+                                           reign_year_start,
+                                           reign_year_end)
+               VALUES (:king-name, 
                        :king-year_of_birth,
                        :king-year_of_death,
                        :king-reign_year_start,
-                       :king-reign_year_end
-               END-EXEC
-               PERFORM SQLSTATE-CHECK
-               IF SQLCODE NOT = 100
-                   DISPLAY king
-               END-IF
-           END-PERFORM.
+                       :king-reign_year_end)
+           END-EXEC.
+
+
+           PERFORM SQLSTATE-CHECK
+
+           EXEC SQL
+               SELECT count(*) INTO :cnt-new
+                FROM kings_of_poland
+           END-EXEC.
+
+           DISPLAY "Rows number after insertion: "cnt-new.
+
+           IF cnt-new > cnt-old THEN
+               DISPLAY "SUCESS!"
+           ELSE    
+               DISPLAY "FAILD!"
+           END-IF.
 
            EXEC SQL
                CONNECT RESET
