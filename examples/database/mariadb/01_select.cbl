@@ -36,7 +36,7 @@
                CONNECT TO :BUFFER
            END-EXEC.
 
-           PERFORM SQLSTATE-CHECK
+           PERFORM SQLSTATE-CHECK.
 
            EXEC SQL
                DECLARE CURR_KINGS CURSOR FOR
@@ -44,13 +44,13 @@
                reign_year_start,reign_year_end FROM kings_of_poland
            END-EXEC.
 
-           PERFORM SQLSTATE-CHECK
+           PERFORM SQLSTATE-CHECK.
 
            EXEC SQL
                OPEN CURR_KINGS
            END-EXEC.
 
-           PERFORM SQLSTATE-CHECK
+           PERFORM SQLSTATE-CHECK.
 
            PERFORM UNTIL SQLCODE = 100
                EXEC SQL 
@@ -75,22 +75,7 @@
            PERFORM SQLSTATE-CHECK.
        STOP RUN.
 
-       SQLSTATE-CHECK SECTION.
-           IF SQLCODE < 0
-                      DISPLAY 'SQLSTATE='  SQLSTATE,
-                              ', SQLCODE=' SQLCODE
-              IF SQLERRML > 0
-                 DISPLAY 'SQL Error message:' SQLERRMC(1:SQLERRML)
-              END-IF
-              MOVE SQLCODE TO RETURN-CODE
-              STOP RUN
-           ELSE IF SQLCODE > 0 AND NOT = 100
-                      DISPLAY 'SQLSTATE='  SQLSTATE,
-                              ', SQLCODE=' SQLCODE
-              IF SQLERRML > 0
-                 DISPLAY 'SQL Warning message:' SQLERRMC(1:SQLERRML)
-              END-IF
-           END-IF.
+       COPY 'SQLSTATE-CHECK.cpy'.
 
 
        

@@ -38,7 +38,7 @@
                CONNECT TO :BUFFER
            END-EXEC.
 
-           PERFORM SQLSTATE-CHECK
+           PERFORM SQLSTATE-CHECK.
 
            EXEC SQL
                SELECT count(*) INTO :cnt-old
@@ -53,7 +53,7 @@
            MOVE 1306 TO king-reign_year_start.
            MOVE 1307 TO king-reign_year_end.
 
-           PERFORM SQLSTATE-CHECK
+           PERFORM SQLSTATE-CHECK.
 
            EXEC SQL
                INSERT INTO kings_of_poland (name, 
@@ -69,7 +69,7 @@
            END-EXEC.
 
 
-           PERFORM SQLSTATE-CHECK
+           PERFORM SQLSTATE-CHECK.
 
            EXEC SQL
                SELECT count(*) INTO :cnt-new
@@ -90,22 +90,6 @@
            PERFORM SQLSTATE-CHECK.
        STOP RUN.
 
-       SQLSTATE-CHECK SECTION.
-           IF SQLCODE < 0
-                      DISPLAY 'SQLSTATE='  SQLSTATE,
-                              ', SQLCODE=' SQLCODE
-              IF SQLERRML > 0
-                 DISPLAY 'SQL Error message:' SQLERRMC(1:SQLERRML)
-              END-IF
-              MOVE SQLCODE TO RETURN-CODE
-              STOP RUN
-           ELSE IF SQLCODE > 0 AND NOT = 100
-                      DISPLAY 'SQLSTATE='  SQLSTATE,
-                              ', SQLCODE=' SQLCODE
-              IF SQLERRML > 0
-                 DISPLAY 'SQL Warning message:' SQLERRMC(1:SQLERRML)
-              END-IF
-           END-IF.
-
+       COPY 'SQLSTATE-CHECK.cpy'.
 
        
