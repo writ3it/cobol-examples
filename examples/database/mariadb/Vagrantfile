@@ -1,0 +1,22 @@
+Vagrant.configure("2") do |config|
+    config.vm.define "mariadb" do |mariadb|
+        mariadb.vm.box = "generic/debian10"
+        mariadb.vm.hostname = 'mariadb.local'
+        mariadb.vm.network "private_network", ip: "10.0.1.2"
+        mariadb.vm.network "forwarded_port", guest: 3306, host: 3306
+
+        mariadb.vm.provision :file do |file|
+            file.source = "init.sql"
+            file.destination = "/tmp/init.sql"
+        end
+
+        mariadb.vm.provision "shell", inline: <<-SHELL
+            sudo apt-get update
+            sudo apt-get -y install gnupg mariadb-server
+
+            sudo mysql -e "CREATE DATABASE coboldb;"
+            
+            sudo mysql coboldb < /tmp/init.sql
+        SHELL
+    end
+end
