@@ -10,6 +10,7 @@ The set of cobol examples
 3. Do in the terminal `$ vagrant up`.
 4. Open selected program in VSC.
 5. Type `Ctrl + Shift + B`. Enjoy!
+6. After work, do `$ vagrant halt` to stop virtual machines.
 
 
 ## Usefull docs
