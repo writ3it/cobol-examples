@@ -3,6 +3,17 @@ The set of cobol examples
 
 ## Getting Started
 
+1. Install Vagrant ([documentation](https://www.vagrantup.com/docs/installation)).
+2. Install Visual Studio Code ([documentation](https://code.visualstudio.com/)), and plugins listed below:
+- Language support `ext install bitlang.cobol` ([description](https://marketplace.visualstudio.com/items?itemName=bitlang.cobol))
+- GnuCobol support `ext install bitlang.gnucobol` ([description](https://marketplace.visualstudio.com/items?itemName=bitlang.gnucobol))
+- COBOL flow visualization `ext install broadcomMFD.ccf` ([description](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.ccf))
+3. Do in the terminal `$ vagrant up`.
+4. Open selected program in VSC.
+5. Type `Ctrl + Shift + B`. Enjoy!
+
+## Local building
+
 ### GnuCobol installation
 
 ```bash
@@ -21,19 +32,6 @@ $ cobc -x basic/01_hello_world.cob
 ```
 $ ./01_hello_world
 ```
-
-### Compiling & executing using IDE (VSC)
-
-#### IDE preparation
-1. Install Visual Studio Code
-2. Install plugis (I will keep improving the list.):
-- Language support `ext install bitlang.cobol` ([description](https://marketplace.visualstudio.com/items?itemName=bitlang.cobol))
-- GnuCobol support `ext install bitlang.gnucobol` ([description](https://marketplace.visualstudio.com/items?itemName=bitlang.gnucobol))
-- COBOL flow visualization `ext install broadcomMFD.ccf` ([description](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.ccf))
-
-#### IDE compiling & executing
-
-1. If you are using linux, everything is configured out of the box. Type `Ctrl + Shift + B`. Enjoy!
 
 
 ## Usefull docs

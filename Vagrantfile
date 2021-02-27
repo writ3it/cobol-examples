@@ -26,6 +26,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.define "cobol" do |cobol|
         cobol.vm.synced_folder "examples", "/home/vagrant/examples/"
+        cobol.vm.synced_folder "CopyBooks", "/home/vagrant/CopyBooks/"
         cobol.vm.synced_folder "bin", "/home/vagrant/bin/"
         cobol.vm.box = "generic/debian10"
         cobol.vm.hostname = 'cobol.local'
