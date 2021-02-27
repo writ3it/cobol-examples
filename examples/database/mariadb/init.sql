@@ -1,5 +1,5 @@
 CREATE USER cobolusr@'%' IDENTIFIED BY 'cobolExamplePassword';
-GRANT ALL PRIVILEGES ON coboldb TO cobolusr@'%';
+GRANT ALL PRIVILEGES ON coboldb.* TO cobolusr@'%';
 
 CREATE TABLE kings_of_poland (
     id INT NOT NULL AUTO_INCREMENT,
