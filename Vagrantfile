@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.define "mainframe" do |mainframe|
         mainframe.vm.synced_folder "examples", "/home/vagrant/examples/"
-        mainframe.vm.synced_folder "CopyBooks", "/home/vagrant/CopyBooks/"
+        mainframe.vm.synced_folder "Mainframe/Printers", "/home/vagrant/Printers/"
         mainframe.vm.synced_folder "bin", "/home/vagrant/bin/"
         mainframe.vm.box = "generic/debian10"
         mainframe.vm.hostname = 'mainframe.local'
@@ -47,6 +47,12 @@ Vagrant.configure("2") do |config|
             rm tk4-_v1.00_current.zip
             sudo chown -R vagrant:vagrant mvs
             chmod +x mvs/mvs
+
+            remotePrintersDir=`cat /proc/mounts | grep /home/vagrant/Printers | cut -f1 -d' '`
+            remotePrintersMethod=`cat /proc/mounts | grep /home/vagrant/Printers | cut -f3 -d' '`
+            remotePrintersOptions=`cat /proc/mounts | grep /home/vagrant/Printers | cut -f4 -d' '`
+            sudo mount -t $remotePrintersMethod -o $remotePrintersOptions $remotePrintersDir /home/vagrant/mvs/prt
+            chown vagrant:vagrant mvs/prt
         SHELL
         mainframe.vm.provision "shell",run: 'always',inline: <<-SHELL
             cd mvs
@@ -58,6 +64,7 @@ Vagrant.configure("2") do |config|
     config.vm.define "cobol" do |cobol|
         cobol.vm.synced_folder "examples", "/home/vagrant/examples/"
         cobol.vm.synced_folder "CopyBooks", "/home/vagrant/CopyBooks/"
+        cobol.vm.synced_folder "SampleData", "/home/vagrant/SampleData/"
         cobol.vm.synced_folder "bin", "/home/vagrant/bin/"
         cobol.vm.box = "generic/debian10"
         cobol.vm.hostname = 'cobol.local'

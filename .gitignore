@@ -3,6 +3,8 @@
 !*.*
 !Vagrantfile
 .vagrant/
+Mainframe/Printers/*
+!Mainframe/Printers/empty
 
 /build/
 /build/*.*
