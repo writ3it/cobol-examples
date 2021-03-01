@@ -35,7 +35,7 @@ When you type `Ctrl + Shift + B`, vscode will execute build task that runs build
 
 ## ATTENTION
 
-This repository is under development. Currently building a program using the mainframe does not support copybooks. The connection to mariadb has not been tested. VMs builded with Vagrantfile are not secured. Do not use them for sensitive data or production purposes.
+This repository is under development. Currently building a program using the mainframe does not support copybooks. The connection to mariadb has not been tested. VMs builded with Vagrantfile are not secured. Do not use them for sensitive data or production purposes. Building script lacks of error checking.
 
 ## Important questions and answers
 
@@ -46,6 +46,8 @@ The mainframe is a large computer designed to process large amounts of business 
 ### Why mainframe variant of buildAndRun is so weird?
 
 The actual compilation and running of the program are run in the job queue processed by the mainframe. This makes the process asynchronous to VSCode. Also for this reason, the program output is available on the output device (usually the printer) and not on the terminal. [See compilation using the old mainframe. Hercules works similarly.](https://www.youtube.com/watch?v=uFQ3sajIdaM)
+
+Probably this process will be improved in the future.
 
 ### How to log into Hercules?
 
