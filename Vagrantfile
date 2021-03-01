@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
         mariadb.vm.network "forwarded_port", guest: 3306, host: 3306
 
         mariadb.vm.provision :file do |file|
-            file.source = "examples/database/mariadb/init.sql"
+            file.source = "examples/gnucobol/database/mariadb/init.sql"
             file.destination = "/tmp/init.sql"
         end
 
@@ -47,6 +47,8 @@ Vagrant.configure("2") do |config|
             rm tk4-_v1.00_current.zip
             sudo chown -R vagrant:vagrant mvs
             chmod +x mvs/mvs
+
+            echo "NUMCPU 2" >> mvs/local_conf/01
 
             remotePrintersDir=`cat /proc/mounts | grep /home/vagrant/Printers | cut -f1 -d' '`
             remotePrintersMethod=`cat /proc/mounts | grep /home/vagrant/Printers | cut -f3 -d' '`
@@ -107,7 +109,7 @@ Vagrant.configure("2") do |config|
 
             # c3270
             sudo apt-get -y install c3270 x3270
-            echo "alias mf-terminal='c3270 10.0.1.4 3270'" >> .bashrc
+            echo "alias mf-term='c3270 -model 4 10.0.1.4 3270'" >> .bashrc
         SHELL
     end
 end

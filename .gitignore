@@ -5,7 +5,7 @@
 .vagrant/
 Mainframe/Printers/*
 !Mainframe/Printers/empty
-
+*.log
 /build/
 /build/*.*
 # don't track changes in 
