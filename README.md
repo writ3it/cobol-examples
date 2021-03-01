@@ -45,11 +45,11 @@ The mainframe is a large computer designed to process large amounts of business 
 
 ### Why mainframe variant of buildAndRun is so weird?
 
-The actual compilation and running of the program are run in the job queue processed by the mainframe. This makes the process asynchronous to VSCode. Also for this reason, the program output is available on the output device (usually the printer) and not on the terminal. [Compilation using the old mainframe. Hercules works similarly.](https://www.youtube.com/watch?v=uFQ3sajIdaM)
+The actual compilation and running of the program are run in the job queue processed by the mainframe. This makes the process asynchronous to VSCode. Also for this reason, the program output is available on the output device (usually the printer) and not on the terminal. [See compilation using the old mainframe. Hercules works similarly.](https://www.youtube.com/watch?v=uFQ3sajIdaM)
 
 ### How to log into Hercules?
 
-Type `./bin/mf-terminal.sh` in your terminal. The default user (f.e.) is HERC02 (password: CUL8TR). After finishing work *REMEMBER* to *LOGOFF* (before disconnecting).
+Type `./bin/mf-terminal.sh` in your terminal. The default user (f.e.) is HERC02 (password: CUL8TR). After finishing work **REMEMBER** to **LOGOFF** (before disconnecting).
 
 ## Usefull docs
 
