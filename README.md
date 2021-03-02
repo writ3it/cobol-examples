@@ -21,8 +21,25 @@ PC with linux OS and Vagrant installed. If you are using Windows, translate bin/
 
 1. [examples/gnucobol](examples/gnucobol/README.md) - gnucobol dedicated examples
     - [basic/01_hello_world.cbl](examples/gnucobol/basic/01_hello_world.cbl) - Greeting the World!
+    - [basic/02_variables.cbl](examples/gnucobol/basic/02_variables.cbl) - Declaring "variables" (pictures).
+    - [basic/03_add.cbl](examples/gnucobol/basic/03_add.cbl) - Math: add two numbers.
+    - [basic/04_subtract.cbl](examples/gnucobol/basic/04_subtract.cbl) - Math: subtract two numbers. User input.
+    - [basic/05_multiply.cbl](examples/gnucobol/basic/05_multiply.cbl) - Math: multiply two numbers.
+    - [basic/06_variables.cbl](examples/gnucobol/basic/06_variables.cbl) - Declaring "variables" (pictures).
+    - [basic/07_compute.cbl](examples/gnucobol/basic/07_compute.cbl) - Math: calculating the result of a quadratic function.
+    - [basic/08_redefines.cbl](examples/gnucobol/basic/08_redefines.cbl) - Redefines. Kind of alias of "variable" name (and "variable" type).
+    - [basic/09_rename.cbl](examples/gnucobol/basic/09_rename.cbl) - Rename. (Share "sub variables" across two records.)
+    - [basic/10_copybook.cbl](examples/gnucobol/basic/10_copybook.cbl) - including other source files.
+    - [control/01_if.cbl](examples/gnucobol/control/01_if.cbl) - if statement and comparison operators.
+    - [control/02_loops.cbl](examples/gnucobol/control/02_loops.cbl) - simple loop. Iterate over the code! :)
+    - [control/03_more_loops.cbl](examples/gnucobol/control/03_more_loops.cbl) - simple loop. More classic loops.
+    - [control/04_goto.cbl](examples/gnucobol/control/04_goto.cbl) - GOTO and GOTO Monster (something like a switch statement).
+    - [database/mariadb/01_select.cbl][examples/gnucobol/database/mariadb/01_select.cbl] - SELECT SQL Statement.
+    - [database/mariadb/02_insert_update.cbl][examples/gnucobol/database/mariadb/02_insert_update.cbl] - INSERT and UPDATE SQL Statements.
+    - [database/mariadb/03_delete.cbl][examples/gnucobol/database/mariadb/03_delete.cbl] - DELETE SQL Statement.
+    - [database/mariadb/04_ddl.cbl][examples/gnucobol/database/mariadb/01_select.cbl] - CREATE TABLE and DROP TABLE SQL Statement.
 2. [examples/mainframe](examples/mainframe/README.md) - Hercules dedicated examples
-    - [basic/01_hello_world.cbl](examples/mainframebasic/01_hello_world.cbl) - Greeting the World!
+    - [basic/01_hello_world.cbl](examples/mainframe/basic/01_hello_world.cbl) - Greeting the World!
 3. Mainframe/Printers - Hercules printers output files
     - prt00e.txt - A device
 

@@ -13,7 +13,9 @@
            END-PERFORM.
 
       * Loop over paragraphs
-           PERFORM B-PARAGRAPH THRU D-PARAGRAPH.
+           PERFORM B-PARAGRAPH THRU D-PARAGRAPH 2 TIMES.
+
+           DISPLAY "=======".
 
            A-PARAGRAPH.
            DISPLAY 'A-PARATRAPH'.
