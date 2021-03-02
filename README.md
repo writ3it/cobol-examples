@@ -20,6 +20,7 @@ PC with linux OS and Vagrant installed. If you are using Windows, translate bin/
 ## Table of Contents
 
 1. [examples/gnucobol](examples/gnucobol/README.md) - gnucobol dedicated examples
+    - [motto.cbl](examples/motto.cbl) - gnuCobol motto!
     - [basic/01_hello_world.cbl](examples/gnucobol/basic/01_hello_world.cbl) - Greeting the World!
     - [basic/02_variables.cbl](examples/gnucobol/basic/02_variables.cbl) - Declaring "variables" (pictures).
     - [basic/03_add.cbl](examples/gnucobol/basic/03_add.cbl) - Math: add two numbers.
@@ -34,10 +35,19 @@ PC with linux OS and Vagrant installed. If you are using Windows, translate bin/
     - [control/02_loops.cbl](examples/gnucobol/control/02_loops.cbl) - simple loop. Iterate over the code! :)
     - [control/03_more_loops.cbl](examples/gnucobol/control/03_more_loops.cbl) - simple loop. More classic loops.
     - [control/04_goto.cbl](examples/gnucobol/control/04_goto.cbl) - GOTO and GOTO Monster (something like a switch statement).
-    - [database/mariadb/01_select.cbl][examples/gnucobol/database/mariadb/01_select.cbl] - SELECT SQL Statement.
-    - [database/mariadb/02_insert_update.cbl][examples/gnucobol/database/mariadb/02_insert_update.cbl] - INSERT and UPDATE SQL Statements.
-    - [database/mariadb/03_delete.cbl][examples/gnucobol/database/mariadb/03_delete.cbl] - DELETE SQL Statement.
-    - [database/mariadb/04_ddl.cbl][examples/gnucobol/database/mariadb/01_select.cbl] - CREATE TABLE and DROP TABLE SQL Statement.
+    - [database/mariadb/01_select.cbl](examples/gnucobol/database/mariadb/01_select.cbl) - SELECT SQL Statement.
+    - [database/mariadb/02_insert_update.cbl](examples/gnucobol/database/mariadb/02_insert_update.cbl) - INSERT and UPDATE SQL Statements.
+    - [database/mariadb/03_delete.cbl](examples/gnucobol/database/mariadb/03_delete.cbl) - DELETE SQL Statement.
+    - [database/mariadb/04_ddl.cbl](examples/gnucobol/database/mariadb/01_select.cbl) - CREATE TABLE and DROP TABLE SQL Statement.
+    - [file/01_read.cbl](examples/gnucobol/file/01_read.cbl) - read line sequentially.
+    - [file/02_write.cbl](examples/gnucobol/file/02_write.cbl) - read line sequentially and write to indexed file.
+    - [file/03_rewrite.cbl](examples/gnucobol/file/03_rewrite.cbl) - something like SQL UPDATE.
+    - [sorting/01_sort.cbl](examples/gnucobol/sorting/01_sort.cbl) - sort file.
+    - [string/01_inspect.cbl](examples/gnucobol/string/01_inspect.cbl) - count characters, replacing.
+    - [string/02_concatenation.cbl](examples/gnucobol/string/02_concatenation.cbl) - strings concatenation.
+    - [string/03_split.cbl](examples/gnucobol/string/03_split.cbl) - split string by delimiter.
+    - [subroutines/01_call_main.cbl](examples/gnucobol/subroutines/01_call_main.cbl) - call subroutine with params.
+    - [subroutines/01_call_subroutine.cbl](examples/gnucobol/subroutines/01_call_subroutine.cbl) - example of subroutine. (Is automatically compiled with 01_call_main)
 2. [examples/mainframe](examples/mainframe/README.md) - Hercules dedicated examples
     - [basic/01_hello_world.cbl](examples/mainframe/basic/01_hello_world.cbl) - Greeting the World!
 3. Mainframe/Printers - Hercules printers output files
