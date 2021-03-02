@@ -53,6 +53,8 @@ PC with linux OS and Vagrant installed. If you are using Windows, translate bin/
 3. Mainframe/Printers - Hercules printers output files
     - prt00e.txt - A device
 
+GnuCobol doesn't support OOP yet.
+
 ## Environment architecture
 
 ![Environment architecture diagram](docs/vagrant_arch.png)
