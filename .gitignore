@@ -4,7 +4,7 @@
 !Vagrantfile
 .vagrant/
 Mainframe/Printers/*
-!Mainframe/Printers/empty
+!Mainframe/Printers/.gitkeep
 *.log
 /build/
 /build/*.*
