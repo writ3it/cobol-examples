@@ -57,6 +57,8 @@ else
 
 
     cobc  -I$1/CopyBooks -I$1/CopyBooks/Public -fixed -static -x -o $1/build/$fileName $filesStr -locsql || exit 1
+    echo -e "\n\n\033[1m\033[0;32mProgram output:\n---\033[0m"
     cd $1/build; OCSQL_LOGLEVEL=0 ./$fileName
+    echo -e "\033[1m\033[0;32m---\nEnd of the program output.\n\033[0m"
     # /gnuCOBOL
 fi

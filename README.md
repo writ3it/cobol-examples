@@ -9,13 +9,15 @@ PC with linux OS and Vagrant installed. If you are using Windows, translate bin/
 ## Getting Started
 
 1. Install Vagrant ([documentation](https://www.vagrantup.com/docs/installation)).
+2. Clone this repository and open repo directory in VSC.
+3. Install extensions:
 - Language support `ext install bitlang.cobol` ([description](https://marketplace.visualstudio.com/items?itemName=bitlang.cobol))
 - GnuCobol support `ext install bitlang.gnucobol` ([description](https://marketplace.visualstudio.com/items?itemName=bitlang.gnucobol))
 - COBOL flow visualization `ext install broadcomMFD.ccf` ([description](https://marketplace.visualstudio.com/items?itemName=broadcomMFD.ccf))
-3. Do in the terminal `$ vagrant up`.
-4. Open selected program in VSC.
-5. Type `Ctrl + Shift + B`. Enjoy!
-6. After work, do `$ vagrant halt` to stop virtual machines.
+4. Do in the terminal `$ vagrant up`.
+5. Open selected program in VSC.
+6. Type `Ctrl + Shift + B`. Enjoy!
+7. After work, do `$ vagrant halt` to stop virtual machines.
 
 ## Table of Contents
 
