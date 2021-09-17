@@ -108,7 +108,7 @@ Vagrant.configure("2") do |config|
             chmod +x bin/*
 
             # c3270
-            sudo apt-get -y install c3270 x3270
+            sudo apt-get -y install c3270 x3270 s3270
             echo "alias mf-term='c3270 -model 4 10.0.1.4 3270'" >> .bashrc
         SHELL
     end
